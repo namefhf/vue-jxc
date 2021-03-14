@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card style="margin:10px 0">
+    <el-card style="margin:5px 0">
       <el-form size="mini" inline>
         <el-form-item>
           <el-input
@@ -13,7 +13,7 @@
             label="不显示已关闭"
             border
             v-model="isClose"
-            @change="handleChange"
+            @change="handleCheckboxChange"
           ></el-checkbox>
           <el-button>展开筛选</el-button>
           <el-dropdown>
@@ -81,7 +81,7 @@
                     start-placeholder="开始日期"
                     end-placeholder="结束日期"
                     value-format="yyyy-MM-dd"
-                    @change="handleChange"
+                    @change="handleDateChange"
                   ></el-date-picker>
                 </div>
               </div>
@@ -96,8 +96,18 @@
               </div>
             </el-form-item>
             <el-form-item label="经手人">
-              <el-select v-model="selectValue" placeholder="">
-                <el-option value="1">1</el-option>
+              <el-select
+                clearable
+                v-model="selectValue"
+                placeholder=""
+                @change="handleSelectChange"
+              >
+                <el-option
+                  :value="item.value"
+                  :label="item.label"
+                  v-for="item in guideList"
+                  :key="item.value"
+                ></el-option>
               </el-select>
             </el-form-item>
           </el-form>
@@ -108,6 +118,7 @@
 </template>
 
 <script>
+import qs from 'qs'
 import { assAudit } from '@/api/sale/saleOrder'
 import { antiAudit } from '@/api/sale/saleOrder'
 import { listOptionsIncludeGuide } from '@/api/employee'
@@ -124,6 +135,7 @@ export default {
       dateValue: '',
       radio: '不限',
       selectValue: '',
+      guideList: [],
       data: {
         auditStatus: '-1',
         isClose: 0,
@@ -149,7 +161,17 @@ export default {
   },
   methods: {
     handleSearch() {
-      this.$set(this.data, 'keywords', this.keywords)
+      this.data = Object.assign({}, this.data, {
+        keywords: this.keywords,
+        handUserId: this.selectValue
+      })
+      // this.$set(
+      //   this.data,
+      //   'keywords',
+      //   this.keywords,
+      //   'handUserId',
+      //   this.selectValue
+      // )
       // this.$emit('update', this.data)
     },
     // 审核操作
@@ -170,8 +192,9 @@ export default {
         }
       }
     },
-    handleChange() {
+    handleCheckboxChange() {
       this.data.isClose = this.data.isClose === 0 ? 1 : 0
+      // this.$emit('update', this.data)
     },
     async antiAudit() {
       console.log(1)
@@ -192,12 +215,17 @@ export default {
     changeTab(index) {
       this.currentTab = index
     },
-    handleChange(date) {
+    handleDateChange(date) {
       console.log(date)
     },
     async getListOptionsIncludeGuide() {
       const { data } = await listOptionsIncludeGuide(1286193815601938400)
-      console.log(data)
+      this.guideList = data
+      // console.log(data)
+    },
+    handleSelectChange(value) {
+      console.log(this.selectValue)
+      // this.$set(this.data.data,'handUserId',value)
     }
   }
 }
