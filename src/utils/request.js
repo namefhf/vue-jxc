@@ -13,7 +13,7 @@ service.interceptors.request.use(
     if (store.getters.token) {
       // config.headers['X-Token'] = getToken()
       config.headers.token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMjg2MTkzODE1NzczOTA0ODk2IiwidGVuYW50SWQiOiIxMjg2MTkzODE1NTEzODU4MDQ4IiwiaWF0IjoxNjE1Njg0NjExLCJleHAiOjE2MTU3NzEwMTF9.TwkhgsuXPhRHA9hsa4Hdi8uutUMvHmYEfbh1qcmbIR4'
+        'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMjg2MTkzODE1NzczOTA0ODk2IiwidGVuYW50SWQiOiIxMjg2MTkzODE1NTEzODU4MDQ4IiwiaWF0IjoxNjE1NzY3NTc2LCJleHAiOjE2MTU4NTM5NzZ9.slzPibE5_BHhpgVgRucnJ3nUoYuXVdM8C-OqYxWBrz4'
     }
     return config
   },

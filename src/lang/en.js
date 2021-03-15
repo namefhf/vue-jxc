@@ -12,7 +12,8 @@ export default {
     sale: 'sale',
     saleorder_list: 'saleorder_list',
     sale_list: 'sale_list',
-    salereturn_list: 'salereturn_list'
+    salereturn_list: 'salereturn_list',
+    saleorder_add: 'saleorder_add'
   },
   navbar: {
     logOut: 'Log Out',

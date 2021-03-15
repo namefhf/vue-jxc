@@ -20,3 +20,13 @@ export function antiAudit(params) {
     data: params
   })
 }
+export function close(params) {
+  return request({
+    url: 'bill/saleOrder/close',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    data: params
+  })
+}

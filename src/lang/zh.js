@@ -12,7 +12,8 @@ export default {
     sale: '销售',
     saleorder_list: '销售订单',
     sale_list: '销售单',
-    salereturn_list: '销售退货'
+    salereturn_list: '销售退货',
+    saleorder_add: '新增订单'
   },
   navbar: {
     logOut: '退出登录',

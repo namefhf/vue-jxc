@@ -52,6 +52,7 @@ export const asyncRoutes = [
     path: '/sale',
     component: Layout,
     name: 'sale',
+    redirect: '/sale/saleorder_list',
     meta: { title: 'sale', icon: 'nested' },
     children: [
       {
@@ -71,6 +72,13 @@ export const asyncRoutes = [
         name: 'salereturn_list',
         component: () => import('@/views/nested/menu1/index'),
         meta: { title: 'salereturn_list' }
+      },
+      {
+        path: 'saleorder_add',
+        name: 'saleorder_add',
+        component: () => import('@/views/sale/saleorder-add'),
+        meta: { title: 'saleorder_add' },
+        hidden: true
       }
     ]
   },

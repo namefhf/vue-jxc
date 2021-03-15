@@ -67,6 +67,17 @@
         width=""
       ></vxe-table-column>
     </vxe-table>
+    <div class="pagination-wrap">
+      <el-pagination
+        :total="pageInfo.total"
+        :current-page="pageInfo.current"
+        :page-size="pageInfo.size"
+        :page-sizes="[20, 30, 40]"
+        @current-change="handleCurrentChange"
+        @size-change="handleSizeChange"
+        layout="total, sizes, prev, pager, next, jumper"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
@@ -88,13 +99,7 @@ export default {
         total: 0,
         page: 1
       },
-      data: {
-        auditStatus: '-1',
-        isClose: 0,
-        dateTab: 3,
-        bBeginTime: '2021-03-01',
-        bEndTime: '2021-03-31'
-      },
+      formOption: {},
       tableData: [],
       selectedId: []
     }
@@ -104,8 +109,18 @@ export default {
     async getListPage(dataInfo) {
       const { data } = await listPage({ data: dataInfo, page: this.pageInfo })
       this.tableData = data.records
+      this.pageInfo.total = data.total
+    },
+    handleCurrentChange(currentPage) {
+      this.pageInfo.current = currentPage
+      this.getListPage(this.formOption)
+    },
+    handleSizeChange(size) {
+      this.pageInfo.size = size
+      this.getListPage(this.formOption)
     },
     update(data) {
+      this.formOption = data
       this.getListPage(data)
     },
     cellStyle({ row }) {
@@ -129,4 +144,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.pagination-wrap {
+  float: right;
+}
+</style>
