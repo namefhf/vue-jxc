@@ -13,7 +13,10 @@ export default {
     saleorder_list: 'saleorder_list',
     sale_list: 'sale_list',
     salereturn_list: 'salereturn_list',
-    saleorder_add: 'saleorder_add'
+    saleorder_add: 'saleorder_add',
+    setup: 'setup',
+    shop_list: 'shop_list',
+    store_list: 'store_list'
   },
   navbar: {
     logOut: 'Log Out',

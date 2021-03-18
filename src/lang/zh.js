@@ -13,7 +13,10 @@ export default {
     saleorder_list: '销售订单',
     sale_list: '销售单',
     salereturn_list: '销售退货',
-    saleorder_add: '新增订单'
+    saleorder_add: '新增订单',
+    setup: '设置',
+    shop_list: '组织',
+    store_list: '仓库'
   },
   navbar: {
     logOut: '退出登录',

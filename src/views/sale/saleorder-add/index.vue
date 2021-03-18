@@ -56,6 +56,37 @@
           </div>
         </el-form>
       </div>
+
+      <vxe-table
+        :data="tableData"
+        keep-source
+        border
+        :edit-config="{
+          trigger: 'click',
+          mode: 'cell',
+          icon: 'fa fa-pencil',
+          showStatus: true
+        }"
+      >
+        <vxe-table-column type="seq"></vxe-table-column>
+        <vxe-table-column
+          field="name"
+          title="商品名称"
+          :edit-render="{
+            name: 'input',
+            trigger: 'click',
+            activeMethod: activeRowMethod
+          }"
+        ></vxe-table-column>
+        <vxe-table-column field="number" title="商品编号"></vxe-table-column>
+        <vxe-table-column field="count" title="数量"></vxe-table-column>
+        <vxe-table-column field="unit" title="单位"></vxe-table-column>
+        <vxe-table-column field="unitPrice" title="单价"></vxe-table-column>
+        <vxe-table-column field="amount" title="金额"></vxe-table-column>
+        <vxe-table-column field="taxRates" title="税率"></vxe-table-column>
+        <vxe-table-column field="taxAmount" title="税额"></vxe-table-column>
+        <vxe-table-column field="note" title="备注"></vxe-table-column>
+      </vxe-table>
     </el-card>
   </div>
 </template>
@@ -76,7 +107,31 @@ export default {
       saleorderAddFromRules: {
         shop: [{ required: true }],
         customer: [{ required: true }]
-      }
+      },
+      tableData: [
+        {
+          name: '',
+          number: '',
+          count: '',
+          unit: '',
+          unitPrice: '',
+          amount: '',
+          taxRates: '',
+          taxAmount: '',
+          note: ''
+        },
+        {
+          name: '',
+          number: '',
+          count: '',
+          unit: '',
+          unitPrice: '',
+          amount: '',
+          taxRates: '',
+          taxAmount: '',
+          note: ''
+        }
+      ]
     }
   }
 }
