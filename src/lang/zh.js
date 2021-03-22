@@ -16,7 +16,11 @@ export default {
     saleorder_add: '新增订单',
     setup: '设置',
     shop_list: '组织',
-    store_list: '仓库'
+    store_list: '仓库',
+    role_list: '角色权限',
+    role_permissions: '编辑角色权限',
+    baseData: '资料',
+    goods_list: '商品'
   },
   navbar: {
     logOut: '退出登录',

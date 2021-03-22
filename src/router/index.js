@@ -48,9 +48,11 @@ export const constantRoutes = [
 ]
 import saleRoutes from './modules/sale'
 import setupRoutes from './modules/setup'
+import baseData from './modules/baseData'
 export const asyncRoutes = [
   saleRoutes,
   setupRoutes,
+  baseData,
   {
     path: '/nested',
     component: Layout,

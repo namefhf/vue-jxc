@@ -16,7 +16,8 @@ export default {
     saleorder_add: 'saleorder_add',
     setup: 'setup',
     shop_list: 'shop_list',
-    store_list: 'store_list'
+    store_list: 'store_list',
+    role_list: 'role_list'
   },
   navbar: {
     logOut: 'Log Out',
